@@ -34,7 +34,7 @@ import java.util.Map;
 @EnableBatchProcessing
 public class ExportJobConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(ExportJobConfig.class);
-    private static final String PROPERTY_CSV_EXPORT_FILE_HEADER = "title;author;isbn;publisher;publishedOn";
+    private static final String PROPERTY_CSV_EXPORT_FILE_HEADER = "id;title;author;isbn;publisher;publishedOn";
     //private static final String PROPERTY_CSV_EXPORT_FILE_PATH = "database.to.csv.job.export.file.path";
     private static final String PROPERTY_CSV_EXPORT_FILE_PATH = "c:/dojo/buk.csv";
 
@@ -74,7 +74,7 @@ public class ExportJobConfig {
     private PagingQueryProvider createQueryProvider() {
         PostgresPagingQueryProvider queryProvider = new PostgresPagingQueryProvider();
 
-        queryProvider.setSelectClause("SELECT title,author,isbn,publisher,publishedOn ");
+        queryProvider.setSelectClause("SELECT id,title,author,isbn,publisher,publishedOn ");
         queryProvider.setFromClause("FROM book");
         queryProvider.setSortKeys(sortByTitle());
         return queryProvider;
@@ -115,7 +115,7 @@ public class ExportJobConfig {
 
     private FieldExtractor<BookDto> createFieldExtractor() {
         BeanWrapperFieldExtractor<BookDto> extractor = new BeanWrapperFieldExtractor<>();
-        extractor.setNames(new String[] {"title","author","isbn","publisher","publishedOn"});
+        extractor.setNames(new String[] {"id","title","author","isbn","publisher","publishedOn"});
         return extractor;
     }
 

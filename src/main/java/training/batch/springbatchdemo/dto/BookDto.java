@@ -1,6 +1,7 @@
 package training.batch.springbatchdemo.dto;
 
 public class BookDto {
+    private Integer id;
     private String title;
     private String author;
     private String isbn;
@@ -9,12 +10,22 @@ public class BookDto {
 // Constructors, Getters and Setters
 
     public BookDto() {}
-    public BookDto(String title, String author, String isbn, String publisher, Integer publishedOn) {
+    public BookDto(Integer id, String title, String author, String isbn, String publisher, Integer publishedOn) {
+        this.id = id;
+        this.title = title;
         this.title = title;
         this.author = author;
         this.isbn = isbn;
         this.publisher = publisher;
         this.publishedOn = publishedOn;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {
